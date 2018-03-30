@@ -1,0 +1,19 @@
+<import src="/utils/component.wxml"/>
+<!--pages/shoppingcar/shoppingcar.wxml-->
+<view class="container">
+  <view class="empty-icon" hidden="{{isEmpty}}">
+    <image src="/images/empty.png"></image>
+    <view>购物车为空，快去购物吧朋友！</view>
+  </view>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -start -->
+  <template is="itemsList" data="{{itemsData}}"/>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -end -->
+</view>
+<view class="fix-style footBar">
+  <!-- <checkbox class="checkAllBtn" checked/> -->
+  <view class="totail-price">
+    <text>合计</text>
+    <text class="sumPrice">￥{{totalPrice}}</text>
+    </view>
+  <button class="settlement-btn" type="warn" disabled="{{isDisable}}" bindtap="goSettlementFn">去结算</button>
+</view>

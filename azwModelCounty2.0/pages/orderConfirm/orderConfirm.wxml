@@ -1,0 +1,44 @@
+<import src="/utils/component.wxml"/>
+<!--pages/orderConfirm/orderConfirm.wxml-->
+<view class="container">
+  <!-- <view class="classname">选择收货地址</view> -->
+  <navigator wx:if="{{!isAddrShow}}" url="/pages/addrList/addrList?isOrder=1" open-type="navigate" class="addr-info">请选择收货地址</navigator> 
+  <block wx:if="{{isAddrShow}}">
+    <navigator url="/pages/addrList/addrList?isOrder=1" open-type="navigate" class="addr-info">
+      <view class="consignee">{{addrInfo.consignee}} {{addrInfo.mob}}</view>
+      <view class="ellipsis">
+        {{addrInfo.regionName + addrInfo.address}}
+      </view>
+    </navigator>
+  </block>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -start -->
+  <template is="itemsList" data="{{itemsData}}"/> 
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -end -->
+  <view class="settlement isAdvance">
+    <view class="settlement-list ">
+      <view class="list-key">预定</view>
+      <view class="list-val">
+        <switch bindchange="isSumAdvanceFn" />
+      </view>
+    </view>
+  </view>
+  <!-- 结算 - start -->
+  <view class="settlement">
+    <view class="settlement-list">
+      <view class="list-key">商品金额</view>
+      <view class="list-val">¥ {{sumPrice}}</view>
+    </view>
+    <view class="settlement-list">
+      <view class="list-key">优惠金额</view>
+      <view class="list-val">¥ {{discount}}</view>
+    </view>
+    <view class="settlement-list">
+      <view class="list-key">预定金额</view>
+      <view class="list-val">¥ {{sumAdvance}}</view>
+    </view>
+    <view class="settlement-total">合计：<text class="total-price">¥ {{totalPrice}}</text></view>
+  </view>
+
+  <!-- 结算 - end -->
+  <button class="page-btn" type="primary" bindtap="saveOrderFn">微信支付</button>
+</view>

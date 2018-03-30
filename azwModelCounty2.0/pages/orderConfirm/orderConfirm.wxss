@@ -1,0 +1,22 @@
+/* pages/orderConfirm/orderConfirm.wxss */
+@import "/utils/order.wxss";
+.addr-info:active {background-color: #f2f2f2;}
+.addr-list {
+    overflow: hidden;
+    line-height: 50rpx;
+    padding: 20rpx 30rpx;
+    background-color: #fff;
+    padding-right: 0;
+    margin-top: 30rpx;
+    display: flex;
+}
+.addr-info {
+  flex:1;
+  width: 600rpx;
+  font-size: 28rpx;
+}
+.consignee {font-size: 32rpx;padding-bottom: 20rpx;}
+.isAdvance {
+  padding: 10rpx;
+}
+.isAdvance .settlement-list {padding-right: 0;}

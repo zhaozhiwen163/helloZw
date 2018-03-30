@@ -1,0 +1,102 @@
+/* pages/orderList/orderList.wxss */
+@import "/utils/order.wxss";
+.container {padding-top: 110rpx;}
+.order-type {
+  display: flex;
+  text-align: center;
+  line-height: 90rpx;
+  background-color: #fff;
+}
+.order-type text {
+  flex:1;
+  font-size: 24rpx;
+  color: #aaa;
+  box-sizing: border-box;
+}
+.items-list-tit {
+  position: relative;
+  padding-right: 80rpx;
+  background: none;
+  padding-left: 30rpx;
+}
+.items-list-tit::before {
+  position: absolute;
+  right: -50rpx;
+  top: 10rpx;
+  color: #fff;
+  transform: rotate(30deg); 
+  transform-origin: center center;
+  font-size: 24rpx;
+  line-height: 45rpx;
+  width: 200rpx;
+  text-align: center;
+}
+/* --已退款标签-- */
+.refund::before {
+  content: "已退款";
+  background-color: rgba(51,51,51,.8);
+}
+/* --待付款标签-- */
+.cancel::before {
+  content: "已取消";
+  background-color: rgba(51,51,51,.8);
+}
+/* --待付款标签-- */
+.unpaid::before {
+  content: "待付款";
+  background-color: rgba(255,102,0,.8);
+}
+/* --代发货-- */
+.wait::before {
+  content: "待发货";
+  background-color: rgba(255,102,0,.8);
+}
+/* --待收货标签-- */
+.paid::before {
+  content: "待收货";
+  background-color: rgba(51,153,0,.8);
+}
+/* --已完成标签-- */
+.completed::before {
+  content: "已完成";
+  background-color: rgba(51,153,0,.8);
+}
+/* --超时标签-- */
+.overtime::before {
+  content: "超时关闭";
+  background-color: rgba(51,51,51,.8);
+}
+/* 预付款icon */
+.items-list-tit .pre-icon {
+  float: left;
+  text-align: center;
+  color: #fff;
+  background-color: #390;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  height: 50rpx;
+  width: 50rpx;
+  line-height: 50rpx;
+  margin-right: 15rpx;
+  margin-top:20rpx;
+  margin-left:0;
+}
+.order-info {
+  overflow: hidden;
+  padding: 20rpx 30rpx;
+  line-height: 60rpx;
+  border-top: 1rpx solid #ddd;
+  font-size: 32rpx;
+}
+.txt-right {text-align: right;}
+.order-price {
+  color: #e5383c;
+  font-size: 36rpx;
+}
+.pay-btn {
+  float: right;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  padding:0 35rpx;
+}

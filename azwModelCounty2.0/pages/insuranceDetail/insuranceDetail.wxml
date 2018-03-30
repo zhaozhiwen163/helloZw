@@ -1,0 +1,36 @@
+<!--pages/insuranceDetail/insuranceDetail.wxml-->
+<view  class="container">
+  <image class="item-img" src="{{detData.imgUrl}}"></image>
+  <view class="det-row">
+    <text class="key">产品名称：</text>
+    <text class="val">{{detData.companyName}}</text>
+  </view>
+  <view class="det-row">
+    <text class="key">公司名称：</text>
+    <text class="val">{{detData.companyName}}</text>
+  </view>
+  <view class="det-row">
+    <text class="key">保险金额：</text>
+    <text class="val">{{detData.insuranceAmount}}</text>
+  </view>
+  <view class="det-row">
+    <text class="key">保险费率：</text>
+    <text class="val">{{detData.premiumRate}}</text>
+  </view>
+  <view class="det-row">
+    <text class="key">保费公式：</text>
+    <text class="val">{{detData.formula}}</text>
+  </view>
+  <view class="det-row">
+    <text class="key">保险期限：</text>
+    <text class="val">{{detData.period}}</text>
+  </view>
+  <view class="baseline">
+      <text>详情如下</text>
+    </view>
+  <view class="img-urls-wrap">
+    <block wx:for="{{detData.detImgUrls}}" wx:key="i">
+        <image class="det-img" mode="widthFix" src="{{item}}"></image>
+    </block>
+  </view>
+</view>

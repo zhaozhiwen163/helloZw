@@ -1,0 +1,84 @@
+<import src="/utils/component.wxml"/>
+<import src="/wxParse/wxParse.wxml" />
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <!--轮播-->
+  <swiper class="swiper-wrap" indicator-dots="true" circular="true">
+      <swiper-item wx:for="{{detData.itemImgs}}" wx:key="i">
+        <image src="{{imgPath + item}}"></image>
+      </swiper-item>
+  </swiper>
+  <!--商品详情-->
+  <view class="item-info">
+    <view class="item-tit">{{detData.name}}</view>
+    <!-- <view class="ellipsis">由 {{detData.companyName}} 提供销售</view>  -->
+    <view class="item-price">
+      <!-- 调用价格组件 -->
+      <template is="price" data="{{price:detData.price,retailPrice:detData.retailPrice}}"/> 
+      <!-- 调用价格组件 -->
+    </view>
+  </view>
+  <!-- 规格属性 -->
+  <view class="attribute">
+    <view class="attribute-key">规格</view>
+    <view class="attribute-val">
+      <block wx:for="{{detData.skus}}" wx:key="i">
+        <text data-specid="{{item.id}}" class="spec {{item.id == detData.skuId ? 'specOn' : ''}}" bindtap="specChange">{{item.norm}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="attribute">
+    <view class="attribute-key">服务商</view>
+    <view class="attribute-val selectProvider" data-serId="{{detData.serviceId}}">
+      <picker bindchange="bindPickerChange" range="{{serNames}}">
+        <view class="picker">{{detData.companys[serIdx].name}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="attribute">
+    <view class="attribute-key">数量</view>
+    <view class="attribute-val">
+      <!-- 调用商品数量组件 -->
+      <template is="operation" data="{{operationNum: detData.qty}}"/>
+      <!-- 调用商品数量组件 -->
+        <text class="moqTip">最小起订量为{{detData.moq}}</text>
+    </view>
+  </view>
+  <block wx:if="{{detData.promotions[0].id}}">
+    <view class="attribute">
+      <view class="attribute-key">活动</view>
+        <view class="attribute-val">
+          <!-- 调用活动组件 -->
+           <template is="activity" data="{{promotions:detData.promotions}}"/> 
+          <!-- 调用活动组件 -->
+        </view>
+    </view>
+  </block>
+  <!-- 商品详情 - start -->
+  <view class="instructions">
+    <text data-tabindex='1' class="spec {{tabIndex == 1 ? 'tabOn' : ''}}" bindtap="getItemParameterFn">产品介绍</text>
+    <text data-tabindex='2' class="spec {{tabIndex == 2 ? 'tabOn' : ''}}" bindtap="getItemAttrFn">产品参数</text>
+    <text data-tabindex='3' class="spec {{tabIndex == 3 ? 'tabOn' : ''}}" bindtap="getItemPolicyFn">售后政策</text>
+  </view>
+  <view class="tabOne" hidden="{{!(tabIndex == 1)}}">
+     <template is="wxParse" data="{{wxParseData:parameterData.nodes}}" />
+  </view>
+  <view class="attr-wrap" hidden="{{!(tabIndex == 2)}}">
+    <view class="attr-line" wx:for="{{attrData}}" wx:key="i">
+      <view class="attr-key">{{item.attrName}}</view>
+      <view class="attr-val">{{item.attrValue}}</view>
+    </view>
+  </view>
+  <view class="tabThree" hidden="{{!(tabIndex == 3)}}">
+     <template is="wxParse" data="{{wxParseData:policyData.nodes}}" /> 
+  </view>
+  <!-- 商品详情 - end -->
+  
+</view>
+<!-- 加入购物车 & 立即购买 -->
+<view class="fix-style purchase">
+  <button type="primary" bindtap="{{(detData.retailPrice <= 0) ? 'btnTipFn' : 'shoppingcarBtnFn'}}">加入购物车</button>
+  <button type="warn" bindtap="{{(detData.retailPrice <= 0) ? 'btnTipFn' : 'purchaseBtnFn'}}">立即购买</button>
+</view>
+
+

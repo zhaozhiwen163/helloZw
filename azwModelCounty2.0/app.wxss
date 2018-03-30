@@ -1,0 +1,185 @@
+/**app.wxss**/
+.head-nav {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+.head-nav .nav {
+  width: 16.4%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #353535;
+  background-color: #fff;
+  font-size: 28rpx;
+}
+.head-nav .naving {color: #aaa;}
+
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 999;
+}
+page{
+    height: 100%;
+    background-color:#f5f5f5;
+    font-family: "微软雅黑";
+}
+.container {
+  box-sizing: border-box;
+}
+/*--单行文本溢出隐藏--*/
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*--2行文本溢出隐藏--*/
+.ellipsis2{
+    display: -webkit-box;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+/*--3行文本溢出隐藏--*/
+.ellipsis3{
+    display: -webkit-box;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+/*--4行文本溢出隐藏--*/
+.ellipsis4{
+    display: -webkit-box;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+/*清除浮动*/
+.clearfix::after{
+    content: "";
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+    clear: both;
+    display: block;
+}
+/*-- 固定定位 --*/
+.fix-style {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-on {
+  color: #390!important;
+  font-size: 32rpx!important;
+  transition: all .1s;
+  border-bottom: 1rpx solid #390;
+}
+/* 数量运算 */
+.operation {
+  overflow: hidden;
+  font-size: 30rpx;
+  float: left;
+}
+.operation .decr-btn, .operation .incr-btn {
+  float: left;
+  width: 70rpx;
+  height:60rpx;
+  text-align: center;
+  line-height:56rpx;
+  border-color: #d2d2d2;
+  padding: 0;
+  border: 1rpx solid #d2d2d2;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+.operation .decr-btn:active,.operation .incr-btn:active {background-color: #f2f2f2;}
+.operation .decr-btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.operation .incr-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.operation .num-inp {
+  float: left;
+  width: 120rpx;
+  text-align: center;
+  height:60rpx;
+  border-top: 1rpx solid #d2d2d2;
+  border-bottom: 1rpx solid #d2d2d2;
+  box-sizing: border-box;
+}
+
+.money-sign {font-size: 26rpx;}
+
+
+
+
+
+
+
+
+
+
+
+.empty-icon {
+  font-size: 30rpx;
+  text-align: center;
+  color: #a9a9a9;
+  margin-top: 260rpx;
+}
+.empty-icon image {
+  width: 260rpx;
+  height: 260rpx;
+}
+.moqTip {padding-left: 20rpx;}
+
+.baseline {
+  line-height: 90rpx;
+  text-align: center;
+}
+.baseline text {
+  position: relative;
+  padding: 0 20rpx;
+  font-size: 36rpx;
+  color: #a9a9a9;
+}
+.baseline text::after,.baseline text::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: -120rpx;
+  margin: auto;
+  height: 3rpx;
+  background-color: #a9a9a9;
+  width: 120rpx;
+}
+.baseline text::after {
+  left: auto;
+  right: -120rpx;
+}
+
+
+
+
+
+
+
+
+

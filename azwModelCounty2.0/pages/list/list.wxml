@@ -1,0 +1,55 @@
+<!--pages/list/list.wxml-->
+<view class="container">
+  <view class="head-nav">
+    <navigator open-type="redirect" url="#" class="nav">买种子</navigator>
+    <navigator open-type="redirect" url="/pages/modelField/modelField" class="nav">看示范</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">专家服务</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">农业资讯</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">天气</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">药·肥</navigator>
+  </view>
+  <!-- <contact-button type="default-light" size="20" session-from="weapp">
+</contact-button> -->
+  <!-- 列表页banner -->
+  <!-- <view class="banner">
+    <image src="{{imgPath + countyNoticeInfo.img}}"></image>
+  </view> -->
+  <view class="ad-txt-wrap ellipsis" bindtap="openAdFn">
+    {{countyNoticeInfo.content}}
+  </view>
+  <view class="ad-txt-detail" bindtap="closeAdFn" hidden="{{isShow}}">
+    <view class="detail-tit">公告详情</view>
+    <view class="detail-con">{{countyNoticeInfo.content}}</view>
+    </view>
+
+
+  <!-- 商品列表 -->
+  <view class="items-list">
+    <navigator url="/pages/detail/detail?itemId={{item.id}}" open-type="navigate" class="item" wx:for="{{itemsData}}" wx:key="i" data-itemid="{{item.id}}">
+      <image class="item-img" src="{{imgPath + item.defaultImg}}"></image>
+      <view class="item-info">
+        <view class="item-info-top">
+          <view class="item-tit">{{item.name}}</view>
+          <view wx:if="{{item.minPrice == 0}}" class="unknownPrice">待定</view>
+          <view wx:else class="item-price unknownPrice">{{item.minPrice}}</view>
+        </view>
+        <!-- <view class="item-desc">{{item.companyName}}</view> -->
+        <view class="activity-wrap">
+          <view class="tips" wx:if="{{item.isSale > 0}}">促</view>
+          <view class="tips discount-tip" wx:if="{{item.depreciate > 0}}">降</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <block wx:if="{{itemsData.length >= 1}}">
+    <view class="baseline" wx:if="{{pageNum >= totalPages}}">
+      <text>没有更多商品了朋友</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="baseline">
+      <text>该地区没有商品信息</text>
+    </view>
+  </block>
+    
+</view>

@@ -1,0 +1,112 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="container">
+  <!-- <view class="classname">选择收货地址</view> -->
+  <view class="addr-info">
+    <view>{{orderDetData.consignee}} {{orderDetData.mob}}</view>
+    <view class="address">{{orderDetData.regionName+orderDetData.address}}</view>
+  </view>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -start -->
+  <view class="items-list" data-serId="{{orderDetData.companyId}}">
+    <view class="items-list-tit ellipsis">由 {{orderDetData.companyName}} 售后服务</view>
+    <!-- 商品列表-start -->
+    <block wx:for="{{orderDetData.items}}" wx:key="i">
+      <view class="item" wx:if="{{item.isItem == 1}}">
+        <image class="item-img" src="{{imgPath + item.img}}"></image>
+        <view class="item-info">
+          <view class="item-tit ellipsis">{{item.itemName}} {{item.norm}}</view>
+          <view class="item-desc ellipsis">{{item.companyName}}</view>
+          <view class="item-attribute">
+            <view class="item-spec">数量 X{{item.qty}}</view>
+            <view class="item-price">{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:for="{{orderDetData.items}}" wx:key="i">
+      <view class="gift-row" wx:if="{{item.isItem == 2}}">
+        <view class="gift-name"><text>赠</text>{{item.brand+item.itemName}} {{item.norm}}</view>
+        <view class="gift-qty">x{{item.qty}}</view>
+      </view>
+    </block>
+    <!-- 商品列表-end -->
+  </view>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -end -->
+  <!-- 结算 -->
+  <view class="settlement">
+    <view class="settlement-list">
+      <view class="list-key">商品金额</view>
+      <view class="list-val">¥ {{orderDetData.amount}}</view>
+    </view>
+    <view class="settlement-list">
+      <view class="list-key">优惠金额</view>
+      <view class="list-val">¥ {{orderDetData.discount}}</view>
+    </view>
+    <view class="settlement-list">
+      <view class="list-key">订单金额</view>
+      <view class="list-val">¥ {{orderDetData.retailPayAmount}}</view>
+    </view>
+    <!-- 订单类型是否为预售 -->
+    <blcok wx:if="{{orderDetData.orderType == 1}}">
+
+      <view class="settlement-list" wx:if="{{orderDetData.payPrepaid == 0 && orderDetData.prepaid > 0}}">
+        <view class="list-key">预定金额</view>
+        <view class="list-val">¥ {{orderDetData.prepaid}}</view>
+      </view>
+
+      <blcok wx:else>
+        <view class="settlement-list">
+          <view class="list-key">已付订金</view>
+          <view class="list-val">¥ {{orderDetData.payPrepaid}}</view>
+        </view>
+        <view class="settlement-list">
+          <view class="list-key">余款金额</view>
+          <view class="list-val">¥ {{orderDetData.spareMoney}}</view>
+        </view>
+      </blcok>
+      
+    </blcok>
+    <!-- 显示正常订单金额 -->
+    <view class="settlement-total" wx:if="{{(orderDetData.status >= 20 && orderDetData.status <= 23)}}">
+      支付金额<text class="total-price">¥ {{orderDetData.retailPayAmount}}</text>
+    </view>
+
+    <!-- 显示预付金额 -->
+    <view class="settlement-total" wx:elif="{{orderDetData.status == 10 || orderDetData.status == 12 || orderDetData.status == 13}}">
+      支付金额<text class="total-price">¥ {{orderDetData.prepaid}}</text>
+    </view>
+    <!-- 显示预付金额之外的余款 -->
+    <view class="settlement-total" wx:elif="{{(orderDetData.status >= 15 && orderDetData.status <= 18) || orderDetData.status == 11}}">
+      支付金额<text class="total-price">¥ {{orderDetData.spareMoney}}</text>
+    </view>
+
+
+
+
+
+  </view>
+  <view class="order-Info">
+    <text class="method-key">订单编号</text>
+    <text class="method-val">{{orderDetData.id}}</text>
+  </view>
+  <view class="order-Info">
+    <text class="method-key">下单时间</text>
+    <text class="method-val">{{orderDetData.addedTime}}</text>
+  </view>
+  <view class="payment-method">
+    <text class="method-key">支付方式</text>
+    <text class="method-val">微信支付</text>
+  </view>
+
+  <block wx:if="{{(orderDetData.status > 13 && orderDetData.status < 20 && orderDetData.status != 15) || (orderDetData.status == 11)}}">
+    <button class="page-btn settlement-btn" type="primary" data-orderId="{{orderDetData.id}}" bindtap="postOrderFn">立即支付</button>
+  </block>
+
+  <block wx:elif="{{(orderDetData.status >= 20 && orderDetData.status <= 23) || (orderDetData.status == 10 || orderDetData.status == 12 || orderDetData.status == 13) }}">
+    <button class="page-btn settlement-btn" type="primary" data-orderId="{{orderDetData.id}}" bindtap="postOrderFn">立即支付</button>
+    <button class="page-btn cancel-btn" type="default" data-orderId="{{orderDetData.id}}" bindtap="cancelOrderFn">取消订单</button>
+  </block>
+
+  <block wx:elif="{{orderDetData.status >= 40 && orderDetData.status <= 99}}">
+    <button class="page-btn settlement-btn" type="primary" data-orderId="{{orderDetData.id}}" bindtap="receivedFn">确认收货</button>
+  </block>
+</view>

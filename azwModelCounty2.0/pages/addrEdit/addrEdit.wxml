@@ -1,0 +1,30 @@
+<!--pages/addrEdit/addrEdit.wxml-->
+<view class="container">
+  <view class="addr-info space-top">
+    <view class="addr-key">收货人</view>
+    <view class="addr-val">
+      <input type="text" data-key="consignee" value="{{consignee}}" bindblur="blurSetValFn" placeholder="请输入您的姓名" class="addr-val"/>
+    </view>
+  </view>
+  <view class="addr-info">
+    <view class="addr-key">联系电话</view>
+    <input type="number" data-key="mob" value="{{mob}}" bindblur="blurSetValFn" placeholder="请输入您的手机号码" class="addr-val"/>
+  </view>
+  <view class="addr-info space-top">
+    <view class="addr-key">区域</view>
+    <view class="addr-val ellipsis">{{fullName}}</view>
+  </view>
+  <view class="addr-info">
+    <view class="addr-key">详细地址</view>
+    <input type="text" data-key="address" value="{{address}}" bindblur="blurSetValFn" placeholder="请输入详细地址" class="addr-val"/>
+  </view>
+  <view class="addr-info">
+    <view class="addr-key">默认地址</view>
+    <view class="addr-val">
+      <switch class="isDefault" data-key="isDefault" value="{{isDefault}}" bindchange="isDefaultChangeFn" checked="{{isDefault == 1 ? true : ''}}" />
+    </view>
+  </view>
+  <!-- 保存按钮 -->
+  <button type="primary" class="save-btn" bindtap="testInfoFn">保存</button>
+  <button type="warn" class="save-btn" bindtap="delAddrFn" wx:if="{{consignee}}">删除</button>
+</view>

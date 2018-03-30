@@ -1,0 +1,4 @@
+<!--pages/authorization/authorization.wxml-->
+<view class="container">
+  <button class="reGetLocation" bindtap="reGetLocationFn" type="primary">授权地理位置</button>
+</view>

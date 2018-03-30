@@ -1,0 +1,11 @@
+<!--pages/center/center.wxml-->
+<view class="container">
+    <view class="user-head" bindtap="getUserInfoFn">
+        <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/images/farmer.png'}}"></image>
+    </view>
+    <view class="center-list">
+        <navigator url="/pages/orderList/orderList" open-type="navigate" class="list icon-order">我的订单</navigator>
+        <navigator url="/pages/addrList/addrList" open-type="navigate" class="list icon-addr">地址管理</navigator>
+    </view>
+</view>
+

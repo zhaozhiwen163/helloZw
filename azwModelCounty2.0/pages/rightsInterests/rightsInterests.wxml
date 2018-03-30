@@ -1,0 +1,83 @@
+<!--pages/rightsInterests/rightsInterests.wxml-->
+<view class="container">
+  <view class="fix-style head-tab">
+    <text data-index="1" class="{{tabIndex == 1 ? 'on' : ''}}" bindtap="switchTabFn">权益保障</text>
+    <text data-index="2" class="{{tabIndex == 2 ? 'on' : ''}}" bindtap="switchTabFn">关于我们</text>
+  </view>
+
+
+
+
+  
+  <!-- tab1--start -->
+  <view class="right" hidden="{{tabIndex != 1}}">
+    <view class="right-row">
+      <view class="right-tit">正品保障</view>
+      <view class="right-intro">网站所售产品均为厂家正品，非正品无条件提供退货</view>
+    </view>
+    <view class="right-row buy">
+      <view class="right-tit">买家必读</view>
+      <view class="right-intro">因厂家会在没有任何提前通知的情况下更改产品包装、说明，本司不能确保客户收到的货物与商城图片、说明完全一致。只能确保为原厂正货！若本网站没有及时更新，请大家谅解。</view>
+    </view>
+    <view class="right-row service">
+      <view class="right-tit">售后政策</view>
+      <view class="right-intro">以下产品均提供无条件退货:</view>
+      <view class="right-intro">①收到的产品与网站宣传不符;</view>
+      <view class="right-intro">②经检测，产品属于含量，重量等不合格的产品；</view>
+      <view class="right-intro">③收到产品属于非正规厂家生产；</view>
+    </view>
+    <view class="right-row return">
+      <view class="right-tit">退换货处理</view>
+      <view class="right-intro">产品验货时，如发现产品严重缺失、破损、与所订产品描述不符等问题，可与厂家客服人员联系，如厂家解决结果不合理或者厂家处理态度不积极，客户可以沟通爱种网平台客服，我们会在第一时间跟您沟通处理。</view>
+    </view>
+    <view class="right-row duty">
+      <view class="right-tit">责任声明</view>
+      <view class="right-intro">本站产品信息均来自于厂家，其真实性、准确性和合法性由信息拥有者（厂家）负责。本站不提供任何保证，并不承担任何法律责任。</view>
+    </view>
+  </view>
+  <!-- tab1--end -->
+
+
+
+
+
+  <!-- tab2--start -->
+  <view class="about" hidden="{{tabIndex != 2}}">
+    <view class="section">北京爱种网络科技有限公司（简称“爱种网”）成立于2014年9月，由国内大型的11家种子企业（隆平高科、金色农华、东亚种业、垦丰种业、敦煌种业、登海种业、大华种业、中种集团、登海良玉、丰乐种业、荃银高科）和现代种业发展基金共同投资设立，是国内农业领域一家由众多骨干大型企业共同发起的具有公信力的中立第三方信息、电商、信用和大数据平台。 </view>
+    <view class="section"> 依托于中国种子协会的指导和支持，爱种网致力于打通农资行业中的信息流，以“互联网+种业”作为业务根基和优先发展领域，力求将种业互联网做专做深，扎扎实实为种子企业、农户和渠道商服务。同时爱种网还向农药、化肥、农机、种植服务、专家指导、农业资讯、订单农业、农业保险、农业贷款、农业金融等各个领域拓展，着力打造“全程服务种植业”的具有公信力的农业大数据平台。</view>
+    <view class="vision">
+      <view>目标：创建中国具有公信力的种子信息和电商平台</view>
+      <view>愿景：打造中国农资和种植业信用和大数据平台</view>
+      <view>梦想：建成中国农业互联网新生态圈</view>
+    </view>
+    <image class="img" src="/images/aizhong.png"></image>
+    <view class="menu">
+      <view class="baseline">
+        <text>股东名单</text>
+      </view>
+      <view>袁隆平农业高科技股份有限公司</view>
+      <view>北京金色农华种业科技股份有限公司</view>
+      <view>辽宁东亚种业有限公司</view>
+      <view>北大荒垦丰种业股份有限公司</view>
+      <view>现代种业发展基金有限公司</view>
+      <view>甘肃省敦煌种业股份有限公司</view>
+      <view>山东登海种业股份有限公司</view>
+      <view>江苏大华种业集团有限公司</view>
+      <view>中国种子集团有限公司</view>
+      <view>丹东登海良玉种业股份有限公司</view>
+      <view>合肥丰乐种业股份有限公司</view>
+      <view>安徽荃银高科种业股份有限公司</view>
+      <view>厦门市种为先农业科技合伙企业（有限合伙）</view>
+    </view>
+    <view class="link">
+      <view class="baseline">
+        <text>联系我们</text>
+      </view>
+      <view>公司名称：北京爱种网络科技有限公司</view>
+      <view>公司地址：北京市朝阳区望京阜通东大街1号院望京soho塔2 C座2705室（邮编：100102）</view>
+      <view>公司网址：https://www.51zhongzi.com</view>
+      <view>联系电话：010-61842843</view>
+    </view>
+  </view>
+  <!-- tab2--end -->
+</view>

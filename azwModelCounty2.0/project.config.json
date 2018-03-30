@@ -1,0 +1,51 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.5.2",
+	"appid": "wx053afd8bdbf79282",
+	"projectname": "%E7%A4%BA%E8%8C%83%E5%8E%BF%E5%8C%BA%E5%9F%9F%E9%A6%86",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": [
+				{
+					"name": "test",
+					"pathName": "",
+					"title": "",
+					"cacheKey": ""
+				}
+			]
+		},
+		"conversation": {
+			"current": 0,
+			"list": [
+				{
+					"name": "test",
+					"query": "",
+					"boxQI": "",
+					"service": {}
+				}
+			]
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"name": "test",
+					"pathName": "COMPONENT/music",
+					"query": "a=哈哈",
+					"scene": 1044,
+					"shareInfo": {},
+					"referrerInfo": {}
+				}
+			]
+		}
+	}
+}

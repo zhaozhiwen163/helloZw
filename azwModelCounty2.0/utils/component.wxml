@@ -1,0 +1,168 @@
+<!-- ======商品数量运算--template--start====== -->
+<template name="operation">
+  <view class="operation">
+    <view class="decr-btn" data-skusId="{{skusId}}" bindtap="descNumFn">-</view>
+    <input class="num-inp" data-skusId="{{skusId}}" type="number" value="{{operationNum}}" bindblur="setNumFn"/>
+    <view class="incr-btn" data-skusId="{{skusId}}" bindtap="incrNumFn">+</view>
+  </view>
+</template>
+<!-- ======商品数量运算--template--end====== -->
+
+
+<!-- 订单列表状态判断说明-start -->
+  
+<!--(listData.status >= 10 && listData.status <= 23) ? 'unpaid' : ( 若status在10~23之间（开区间），状态为未支付，否则如下
+
+      (listData.status == 30 || listData.status == 31) ? 'wait' : ( 若status在30~31之间（开区间），状态为待发货，否则如下
+
+          (listData.status >= 40 && listData.status <= 99) ? 'paid' : ( 若status在40~99之间（开区间），状态为待收货，否则如下
+
+              listData.status == 100 ? 'completed' : 若status == 100， 状态为已完成，否则如下
+
+                  (listData.status < 0 ? 'cancel' : '') 若status < 0， 状态为已取消，否则为空
+          )
+    )
+) -->
+
+<!-- 订单列表状态判断说明-start -->
+
+
+
+<!-- ======服务商列表--template--start====== -->
+<template name="itemsList">
+  <block wx:for="{{itemsData.itemsList}}" wx:key="i" wx:for-item="listData">
+    <view class="items-list" data-serId="{{listData.companyId || '无值'}}" data-orderId="{{listData.id || '无值'}}"  data-status="{{listData.status || '无值'}}" bindtap="orderDatailFn">
+      <view class="items-list-tit ellipsis {{(listData.status >= 10 && listData.status <= 23) ? 'unpaid' : ((listData.status == 30 || listData.status == 31) ? 'wait' : (listData.status >= 40 && listData.status <= 99) ? 'paid' : (listData.status == 100 ? 'completed' : (listData.status == -1 ? 'cancel': (listData.status == -4 ? 'refund' : (listData.status == -99 ? 'overtime' : '')))))}}"><text class="pre-icon" wx:if="{{listData.orderType == 1}}">预</text>由 {{listData.companyName}} 售后服务</view>
+      <!-- 商品列表-start -->
+      <block wx:for="{{listData.items}}" wx:key="i">
+        <view class="item" data-itemId="{{item.itemId  || '无值'}}" data-skuId="{{item.skuId || '无值'}}" data-orderId="{{listData.id || '无值'}}" data-companyIdSkuId="{{item.companyIdSkuId || '无值'}}" bindlongtap="itemFn">
+          <image class="item-img" src="{{itemsData.imgPath + item.img}}" data-orderId="{{listData.id}}"></image>
+          <view class="item-info" data-orderId="{{listData.id || '无值'}}">
+            <view class="item-tit ellipsis" data-orderId="{{listData.id || '无值'}}">{{item.itemName}} {{item.norm}}</view>
+            <view class="item-desc ellipsis" data-orderId="{{listData.id || '无值'}}">{{item.companyName}}</view>
+            <view class="item-attribute" data-orderId="{{listData.id || '无值'}}">
+              <view class="item-spec" wx:if="{{!itemsData.isShowOperation}}" data-orderId="{{listData.id || '无值'}}">数量 X{{item.qty}}</view>
+              <view class="item-price" data-orderId="{{listData.id || '无值'}}">{{item.price}}</view>
+              <!-- ====商品数量运算组件调用==== -->
+              <template is="operation" wx:if="{{itemsData.isShowOperation}}" data="{{operationNum:item.qty,skusId:item.skuId}}" />
+              <!-- ====商品数量运算组件调用==== -->
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:for="{{listData.orderGifts}}" wx:key="i">
+        <view class="gift-row">
+          <view class="gift-name"><text>赠</text>{{item.name}}</view>
+          <view class="gift-qty">x{{item.qty}}</view>
+        </view>
+      </block>
+      <!-- 商品列表-end -->
+
+      <!-- ====订单列表支付按钮调用==== -->
+      <template is="orderBtn" data="{{orderState:listData.status,amount:listData.amount,orderId:listData.id}}" />
+      <!-- ====订单列表支付按钮调用==== -->
+
+      <!-- 订单列表支付按钮 -->
+    </view>
+  </block>
+</template>
+<!-- ======服务商列表--template--end====== -->
+
+
+
+
+
+
+
+
+<!-- ======订单列表--按钮操作--template--start====== -->
+<template name="orderBtn">
+  <!-- <view class="order-info" wx:if="{{(orderState >= 10 && orderState <= 23)}}">
+    合计<text class="order-price">¥{{amount}}</text>
+    <button class="pay-btn" type="primary" data-orderId="{{orderId}}" bindtap="postOrderFn">去支付</button>
+  </view>
+  <view class="order-info txt-right" wx:elif="{{orderState == 30 || orderState == 31}}">
+    合计<text class="order-price">¥{{amount}}</text>
+  </view>
+  <view class="order-info" wx:elif="{{(orderState >= 40 && orderState <= 99)}}">
+    合计<text class="order-price">¥{{amount}}</text>
+    <button class="pay-btn" type="primary" data-orderId="{{orderId}}" bindtap="receivedFn">确认收货</button>
+  </view>
+  <view class="order-info txt-right" wx:elif="{{orderState == 100}}">
+    合计<text class="order-price">¥{{amount}}</text>
+  </view> -->
+  <!-- 不管什么状态都显示金额，无按钮操作 -->
+  <view class="order-info txt-right"  wx:if="{{orderState >= -4}}">
+    合计<text class="order-price">¥{{amount}}</text>
+  </view>
+</template> 
+<!-- ======订单列表--按钮操作--template--end====== -->
+
+
+
+
+
+
+
+
+
+
+<!-- ======订单详情活动列表--template--start====== -->
+<template name="activity">
+  <block wx:for="{{promotions}}" wx:key="i">
+    <view class="ellipsis" data-actId="{{item.id}}">
+      <text class="tip-icon" wx:if="{{item.types == 1}}">满赠</text>
+      <text class="tip-icon" wx:if="{{item.types == 2 || item.types == 3}}">满减</text>
+      {{item.name}}
+    </view>
+  </block>
+</template>
+<!-- ======订单详情活动列表--template--end====== -->
+
+
+
+
+
+
+
+
+<!-- ======订单详情价格显示--template--start====== -->
+<template name="price">
+  <block wx:if="{{(price - 0) > 0 && (price - 0) < (retailPrice - 0)}}">
+  零售价 <text class="del-price"><text class="money-sign">¥</text>{{retailPrice}}</text>
+  价格 <text class="price"><text class="money-sign">¥</text>{{price}}</text>
+  </block>
+  <block wx:elif="{{(retailPrice - 0) > 0}}">
+  价格 <text class="price"><text class="money-sign">¥</text>{{retailPrice}}</text>
+  </block>
+  <block wx:else>
+  价格 <text class="price">待定</text>
+  </block>
+</template>
+<!-- ======订单详情价格显示--template--end====== -->
+
+
+
+
+
+
+<!-- ======用户评价列表--template--start====== -->
+<template name="msges">
+  <view class="msges-list">
+    <block wx:for="{{msgData}}" wx:key="msg">
+      <view class="{{item.isResMsg ? 'msg-wrap msg-res' : 'msg-wrap'}}">
+        <view class="head-img">
+          <image mode="widthFix" src="{{item.headImg}}"></image>
+        </view>
+        <view class="msg-info">
+          <view class="name">{{item.nickName}} {{item.time}}</view>
+          <view class="msg">{{item.message}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>
+<!-- ======用户评价列表--template--end====== -->
+
+
+

@@ -1,0 +1,97 @@
+<view class='container'>
+   <!-- 导航 -->
+   <view class="head-nav">
+     <navigator open-type="switchTab" url="/pages/list/list" class="nav">买种子</navigator>
+     <navigator open-type="redirect" url="/pages/modelField/modelField" class="nav">看示范</navigator>
+     <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">专家服务</navigator>
+     <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">农业资讯</navigator>
+     <navigator open-type="redirect" url="#" class="nav">天气</navigator>
+     <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">药·肥</navigator>
+  </view>
+  <!-- 天气预报内容 -->
+  <view class='yb_main'>
+      <!-- 定位 -->
+      <view class='dw_top'>
+          <view class='dw_left'>
+             <view class='dw_ico'></view>
+             <view class='dw_word'>北京市  阜安西路</view>
+          </view>
+          <view class='dw_right'>
+             <view class='right_ico'></view>
+             <view class='right_word'>大风蓝色预警</view>
+          </view>
+      </view> 
+      <!-- 日期     -->
+      <view class='date_tq'>
+          <text>3月28日</text><text>周四</text><text class='nl_date'>农历二月十一日</text>
+      </view>
+      <!-- 未来俩小时 -->
+      <view class='future'>
+          <view class='future_ne'>
+            <text class='future_text'>未来两小时短临降水：</text><text>近2小时内不会下雨</text>
+          </view>
+      </view>
+      <!-- 天气详情 -->
+      <view class='tq_detail'>
+         <view class='dt_left'>
+           <text>14°C</text><image mode='widthFix' src='../../images/shaoyun.png'></image>
+         </view>
+         <view class='dt_right'>
+         <view>空气质量 优</view>
+         <view style='margin-top:10rpx'>晴 17 ~  4°C 南风微风</view>
+         </view>
+      </view>
+      
+
+      <!-- 一周内天气 -->
+      <view class='yc_tq'>
+        <scroll-view class='coupons-con' scroll-x="true">
+          <view class='coupon-choose'>
+              <view class='every_yc'>
+                 <view class='yc_xq'>周五</view>
+                 <view class='yc_yr'>3月28日</view>
+                 <image mode='widthFix' src='../../images/shaoyun.png'></image>
+                 <view class='yc_fw'>17 ~  4°C</view>
+                 <view class='yc_qt'>晴</view>
+                 <view class='yc_wf'>微风</view>
+                 <view class='yc_cd'>260 重度</view>
+              </view>
+              <view class='every_yc'>
+                 <view class='yc_xq'>周五</view>
+                 <view class='yc_yr'>3月28日</view>
+                 <image mode='widthFix' src='../../images/shaoyun.png'></image>
+                 <view class='yc_fw'>17 ~  4°C</view>
+                 <view class='yc_qt'>晴</view>
+                 <view class='yc_wf'>微风</view>
+                 <view class='yc_cd'>260 重度</view>
+              </view>
+              <view class='every_yc'>
+                 <view class='yc_xq'>周五</view>
+                 <view class='yc_yr'>3月28日</view>
+                 <image mode='widthFix' src='../../images/shaoyun.png'></image>
+                 <view class='yc_fw'>17 ~  4°C</view>
+                 <view class='yc_qt'>晴</view>
+                 <view class='yc_wf'>微风</view>
+                 <view class='yc_cd'>260 重度</view>
+              </view>
+              <view class='every_yc'>
+                 <view class='yc_xq'>周五</view>
+                 <view class='yc_yr'>3月28日</view>
+                 <image mode='widthFix' src='../../images/shaoyun.png'></image>
+                 <view class='yc_fw'>17 ~  4°C</view>
+                 <view class='yc_qt'>晴</view>
+                 <view class='yc_wf'>微风</view>
+                 <view class='yc_cd'>260 重度</view>
+              </view>
+            
+               
+          </view>    
+        </scroll-view>  
+      </view>
+
+
+
+   
+  </view>
+
+</view>

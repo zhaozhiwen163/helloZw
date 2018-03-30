@@ -1,0 +1,22 @@
+<!--pages/insurance/insurance.wxml-->
+<view class="container">
+  <view class="head-nav">
+    <navigator open-type="switchTab" url="/pages/list/list" class="nav">买种子</navigator>
+    <navigator open-type="redirect" url="/pages/modelField/modelField" class="nav">看示范</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">找服务</navigator>
+    <navigator open-type="redirect" url="#" class="nav">上保险</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">药·肥</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">学农技</navigator>
+  </view>
+  <view class="insurance-wrap">
+    <block wx:for="{{insuranceData}}" wx:key="i"> 
+      <navigator open-type="navigate" url="/pages/insuranceDetail/insuranceDetail?id={{item.id}}" data-id="{{item.id}}" class="insurance-list" bindtap="strogeFn">
+        <image mode="widthFix" src="{{item.imgUrl}}"></image>
+        <view class="insurance-info">
+          <view class="insurance-tit ellipsis">{{item.title}} </view>
+          <view class="insurance-intro ellipsis4">{{item.intro}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

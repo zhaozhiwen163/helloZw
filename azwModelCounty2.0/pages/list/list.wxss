@@ -1,0 +1,151 @@
+/* pages/list/list.wxss */
+
+.banner image {
+  width: 100%;
+  display: block;
+}
+.ad-txt-wrap {
+  padding-left: 90rpx;
+  padding-right: 30rpx;
+  background-color: #fff;
+  position: relative;
+  font-size: 26rpx;
+  line-height: 70rpx;
+  color: #999;
+  margin-top: 20rpx;
+}
+.ad-txt-wrap::after {
+  content: "";
+  position: absolute;
+  left: 30rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 40rpx;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAC+UlEQVRoQ+1Zy3ETQRB9bUBXlAEmApwBcgQ4A8tVaIsbJgLLEdhHl3SwiAARgckAKQM7AuAKhZqa1krWaOezvTuSV5T2uNU9069f93zeEHb8ox2PH3sAT83gVhjg9+jgAG8BTGmAsQY0f8Ah/uIChK8u340C4C7aaOEWwMky6AO8phvclwHBPRwBuAOhLfYO340ByLNugj+0gmWc0RCjGADuoQsS8KvfJQ3QX/2RHECe9QsA554gC0Gs23EG428FKjYO8EkBcIYTMG6XlLsRBAFwT/y7DtfPNCj+TwIgbzQzcSdWGgCcAIS5F1Lvpu7XPy/o2gCEbsZ5JOvBOs6b1SSgGHykZyoDCE4apsHKZs7ed0cCfoHRoSEmoeHUAEo0aayKbACZNPvVmtMUjG4seOOjAlAj694SypfbuxWDKX6jQyP8jGVCBYAznIJxrah13/yFhuRM9oVTAM6VJlhCUoMzXIHz3a5o3fasDGUS5LLxrkJls25tZNzDGIR3VaOp4BfdyDRjEvfwI0FZaOZMDCADa2ZPYLsHYPfAngF1UcUOc+Y48TI66jM8mHsFcYMYCJxEfXg+NQuAPpkNY0ALgPHQNAYWR4poC4iBOWo3qQckJnOR9x9rHoE9x33jmrhc2m2rxjGgBfFfADAXh/jGoU2N3z7xWWjnj9Nz7fEa8Fxo5rLem3QE+GWVSheasoHlUp8BWrfcilfKhZjFGNEQZ2VjUt2Jl2s0yf21DiPrqoQRfr8sg2ZM8AfHZdlQqRICYq6g9UH4qMnUim1cVjEgICJwUBNSM7AasMghhg3CKyWQorA1k0Dt0mSRVY5jINQMWCCqseHqgSNJhqs0NyUt1mDDL+628M3TX30a4NLFdC0GCmy0RCY02n7oC9/IHkUuewzPCpUMwGI2OU2GV6roTsyZPG4UE7HpBw6LEUUQLrqe7InJAuFiQ/vIR9IX8xVqm498a0DMg5157JtUemadSUmNt/7MqtwfKpknb+JKUdRw2gOokbwkrv8AQg81YUgEcpoAAAAASUVORK5CYII=');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 40rpx 36rpx; 
+}
+.ad-txt-detail {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: rgba(0,0,0,.75);
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 28rpx;
+  width: 560rpx;
+  z-index:100;
+}
+.detail-tit {
+  text-align: center;
+  padding: 0 30rpx;
+  line-height: 75rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.detail-con {
+  padding: 30rpx;
+  line-height: 1.5;
+  text-indent: 2em;
+  text-align: left;
+}
+/* --商品列表-- */
+.items-list {
+  padding: 20rpx;
+  overflow: hidden;
+}
+.items-list .item {
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0 0 10rpx #ddd;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.items-list .item-img {
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+}
+.items-list .item-info {
+  position: relative;
+  margin-left: 30rpx;
+  flex:1;
+  /* display: flex;
+  flex-wrap: wrap;
+  align-content: space-between; */
+}
+.items-list .item-info-top {
+  overflow: hidden;
+  height: 100%;
+}
+.items-list .item-tit {
+  float: left;
+  margin-top: 15rpx;
+  width: 500rpx;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  /* line-height: 36rpx; */
+}
+.items-list .item-price,.items-list .unknownPrice {
+  margin-top: 120rpx;
+  padding-left:20rpx;
+  padding-right:30rpx;
+  font-size: 36rpx;
+  color: #e4383b;
+  font-weight: bold;
+  position: relative;
+  z-index: 1000;
+  line-height: 1;
+}
+.items-list .item-price::before,.items-list .item-price::after {
+  content: "¥";
+  position: absolute;
+  left: 0;
+  bottom: 5rpx;
+  font-size: 22rpx;
+  font-weight: normal;
+}
+/* .items-list .item-price::after{
+  content: "起";
+  left:120rpx;
+  right: auto;
+} */
+.items-list .item-price .priceQi{
+  font-size: 22rpx;
+  font-weight: normal; 
+}
+.items-list .item-desc {
+  font-size: 30rpx;
+  color: #9a9a9a;
+  width: 460rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 40rpx 0 20rpx;
+}
+/* 活动 */
+.activity-wrap {
+  display: inline-block;
+  overflow: hidden;
+  text-align: right;
+  position: absolute;
+  right: 15rpx;
+  bottom: 20rpx;
+}
+.activity-wrap .tips {
+  border-radius: 4rpx;
+  background-color: #f56565;
+  font-size: 26rpx;
+  line-height: 1;
+  padding: 6rpx;
+  color: #fff;
+  display: inline-block;
+}
+.activity-wrap .discount-tip {
+  background-color: #390;
+  margin-left: 20rpx;
+}

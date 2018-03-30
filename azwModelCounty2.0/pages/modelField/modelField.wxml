@@ -1,0 +1,59 @@
+<!--pages/modelField/modelField.wxml-->
+<view class="container">
+  <view class="head-nav">
+    <navigator open-type="switchTab" url="/pages/list/list" class="nav">买种子</navigator>
+    <navigator open-type="redirect" url="#" class="nav">看示范</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">专家服务</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">农业资讯</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">天气</navigator>
+    <navigator open-type="redirect" url="#" class="nav naving" bindtap="tipFn">药·肥</navigator>
+  </view>
+  <picker class="crop-wrap" value="{{currentCrop}}" range="{{textData}}" mode="multiSelector" bindchange="bindchangeCrop" bindcolumnchange="bindcolumnchangeFn" bindtap="pickerClickFn">
+    <view class="picker">
+        <!-- {{textData[0][currentCrop[0]]}} {{textData[1][currentCrop[1]]}}   -->
+        {{currentCropTxt}}  
+    </view>
+  </picker>
+  <view class="swiper-tab">
+    <text class="swiper-tab-list {{navidx==0 ? 'on' : ''}}" data-navidx="0" bindtap="swichNavFn">全部</text>
+    <text class="swiper-tab-list {{navidx==2 ? 'on' : ''}}" data-navidx="2" bindtap="swichNavFn">当季</text>
+    <text class="swiper-tab-list {{navidx==9 ? 'on' : ''}}" data-navidx="9" bindtap="swichNavFn">历史</text>
+  </view>
+
+  <navigator class="item" url="/pages/fieldDetail/fieldDetail?itemId={{item.id}}" open-type="navigate" wx:for="{{itemsData}}" wx:key='data'>
+    <view class="item-img">
+      <image src="{{imgPath + item.img}}" mode="widthFix"></image>
+    </view>
+    <view class="item-info">
+      <view class="item-tit ellipsis business {{item.mark == 1 ? 'business':'government'}}">{{item.address + item.piname}}{{item.year}}年示范田</view> 
+      <view class="ellipsis" wx:if="{{item.companyName != ''}}">示范单位：{{item.companyName}}</view>
+      <view class='ellipsis' wx:else>示范单位：{{item.comname}}</view>       
+      <view class="ellipsis" wx:if="{{item.coname != ''}}">所属厂商：{{item.coname}}</view>
+      <view class="ellipsis" wx:else>所属厂商：{{item.comname}}</view>     
+      <view class="ellipsis">种植面积：{{item.mu}} 亩</view>
+    </view>
+  </navigator>
+
+  <view class="empty-icon" wx:if="{{itemsData.length == 0}}">
+    <image src="/images/empty.png"></image>
+    <view>该地区暂无此品种示范田</view>
+  </view>
+  <!-- <navigator class="item" url="/pages/fieldDetail/fieldDetail" open-type="navigate">
+    <view class="item-img">
+      <image src="/images/field.jpg" mode="widthFix"></image>
+    </view>
+    <view class="item-info">
+      <view class="item-tit ellipsis business government">沈北新区中单859 2017年示范示范示范示范田</view>
+      <view class="ellipsis">示范企业：辽宁东亚种业有限公司</view>
+      <view class="ellipsis">所属厂商：辽宁东亚种业有限公司</view>
+      <view class="ellipsis">种植面积：1.0亩</view>
+    </view>
+  </navigator> -->
+
+  <view class="load-more" wx:if="{{itemsData.length != 0}}">
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+      <view class="{{itemsData.length == 0 ? 'hide' : 'show'}}">
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      </view>
+  </view>
+</view>

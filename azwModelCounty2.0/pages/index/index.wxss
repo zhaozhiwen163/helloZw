@@ -1,0 +1,50 @@
+/* pages/index/index.wxss */
+page {background-color: #323232;}
+.module-wrap {
+  padding: 40rpx 100rpx 40rpx;
+  overflow: hidden;
+}
+.module-left {
+  float: left;
+  width: 270rpx;
+}
+.module-right {
+  float: right;
+  width: 270rpx;
+}
+.module {
+  height: 150rpx;
+  line-height: 150rpx;
+  margin-bottom: 10rpx;
+  text-align: center;
+  background-color: #989933;
+  color: #fff;
+  font-size: 32rpx;
+}
+.img {
+  width: 270rpx;
+  height: 150rpx;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.img image {
+  display: block;
+  width: 100%;
+}
+.imgH {height: 310rpx;}
+.ksf {background-color: #cc9933;}
+.zfw {background-color: #339966;}
+.sbx {background-color: #009e97;}
+.ksf {background-color: #cc9933;}
+.yf {background-color: #8683c0;}
+.xnj {background-color: #006699;}
+
+
+.company-info {
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+}

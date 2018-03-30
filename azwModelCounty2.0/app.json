@@ -1,0 +1,59 @@
+{
+  "pages":[ 
+    "pages/index/index",
+    "pages/fieldDetail/fieldDetail",
+    "pages/modelField/modelField",
+    "pages/list/list",
+    "pages/download/download",
+    "pages/insurance/insurance",
+    "pages/insuranceDetail/insuranceDetail",
+    "pages/addrList/addrList",
+    "pages/addrEdit/addrEdit",
+    "pages/orderConfirm/orderConfirm",
+    "pages/shoppingcar/shoppingcar",
+    "pages/rightsInterests/rightsInterests",
+    "pages/center/center",
+    "pages/detail/detail",
+    "pages/authorization/authorization",
+    "pages/orderList/orderList",
+    "pages/orderDetail/orderDetail",
+    "pages/tianqi/tianqi"  
+  ],
+  "window": {
+    "navigationBarBackgroundColor":"#333333",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": ""
+  },
+  "tabBar": {
+    "color": "#7f8389",
+    "selectedColor": "#339900",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/list/list",
+        "text": "首页",
+        "selectedIconPath": "images/home.png",
+        "iconPath": "images/home_gray.png"
+      },
+      {
+        "pagePath": "pages/shoppingcar/shoppingcar",
+        "text": "购物车",
+        "selectedIconPath": "images/shoppingcar.png",
+        "iconPath": "images/shoppingcar_gray.png"
+      },
+      {
+        "pagePath": "pages/rightsInterests/rightsInterests",
+        "text": "权益保障",
+        "selectedIconPath": "images/right.png",
+        "iconPath": "images/right_gray.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "selectedIconPath": "images/center.png",
+        "iconPath": "images/center_gray.png"
+      }
+    ]
+  }
+}

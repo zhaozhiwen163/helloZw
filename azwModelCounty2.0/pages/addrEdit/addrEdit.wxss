@@ -1,0 +1,21 @@
+/* pages/addrEdit/addrEdit.wxss */
+.addr-info {
+  padding: 0 30rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  display: flex;
+  border-top: 1rpx solid #ddd;
+}
+.addr-key {width: 180rpx;}
+.addr-val {
+  flex: 1;
+  line-height: 100rpx;
+  height: 100rpx;
+}
+.space-top {
+  margin-top: 30rpx;
+  border: 0;
+}
+.isDefault {float: right;}
+.save-btn {margin:30rpx;}

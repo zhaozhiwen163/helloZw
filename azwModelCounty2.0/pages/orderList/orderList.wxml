@@ -1,0 +1,18 @@
+<import src="/utils/component.wxml"/>
+<!--pages/orderList/orderList.wxml-->
+<view class="container">
+  <!-- order-type -->
+  <view class="fix-style order-type">
+    <text data-status="0" class="{{status == 0 ? 'tab-on' : ''}}" bindtap="orderChangeFn">全部</text>
+    <text data-status="1" class="{{status == 1 ? 'tab-on' : ''}}" bindtap="orderChangeFn">待付款</text>
+    <text data-status="5" class="{{status == 5 ? 'tab-on' : ''}}" bindtap="orderChangeFn">待收货</text>
+    <text data-status="4" class="{{status == 4 ? 'tab-on' : ''}}" bindtap="orderChangeFn">已完成</text>
+  </view>
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -start -->
+  <template is="itemsList" data="{{itemsData}}"/> 
+  <!-- 调用/utils/component.wxml中的 itemsList组件 -end -->
+  <view class="empty-icon" hidden="{{itemsData.itemsList.length > 0}}">
+    <image src="/images/empty.png"></image>
+    <view>朋友，您还没有相关订单信息！</view>
+  </view>
+</view>

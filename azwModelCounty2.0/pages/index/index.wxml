@@ -1,0 +1,31 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- modules -->
+  <view class="module-wrap">
+    <view class="module-left">
+      <navigator open-type="switchTab" url="/pages/list/list" class="module">买种子</navigator>
+      <navigator open-type="navigate" url="/pages/modelField/modelField" class="module ksf">看示范</navigator>
+      <view class="img">
+        <image mode="widthFix" src="{{countyNoticeInfo.oneImg}}" class="img"></image>
+      </view>
+      <navigator bindtap="tipFn" class="module zfw">专家服务</navigator>
+      <view class="img imgH">
+        <image mode="widthFix" src="{{countyNoticeInfo.twoImg}}"></image>
+      </view>
+    </view> 
+    <view class="module-right">
+      <view class="img imgH">
+        <image mode="widthFix" src="{{countyNoticeInfo.threeImg}}"></image>
+      </view>
+      <navigator open-type="navigate" url="#" bindtap="tipFn" class="module sbx">农业资讯</navigator>
+      <view class="img">
+        <image mode="widthFix" src="{{countyNoticeInfo.fourImg}}"></image>
+      </view>
+      <navigator open-type="navigate" url="#" bindtap="tipFn" class="module yf">天气</navigator>
+      <navigator bindtap="tipFn" class="module xnj">药·肥</navigator>
+    </view>
+  </view>
+  <!-- 版权信息 -->
+  <view class="company-info">京ICP备15023017号-1  ©2015-2017 北京爱种网络科技有限公司 版权所有</view>
+  <!-- <view class="mask" wx:if="{{isMask}}"></view>   -->
+</view>

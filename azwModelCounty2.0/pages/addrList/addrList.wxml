@@ -1,0 +1,21 @@
+<!--pages/addrList/addrList.wxml-->
+<view class="container">
+  <!-- 地址列表 -->
+  <block wx:for="{{addrListData}}" wx:for-index="idx" wx:key="i">
+    <view class="addr-list" data-idx="{{idx}}" bindtap="useAddrFn">
+      <navigator class="addr-info" open-type="{{openType}}" data-idx="{{idx}}">
+        <text class="consignee" data-idx="{{idx}}">{{item.consignee}} {{item.mob}}</text>
+        <view class="ellipsis" data-idx="{{idx}}">
+          <text class="isDefault" data-idx="{{idx}}">{{item.isDefault == 1 ? "默认" : ''}}</text>
+          {{item.regionName + item.address}}
+        </view>
+      </navigator>
+      <navigator url="/pages/addrEdit/addrEdit?id={{item.id}}" open-type="navigate" data-idx="{{idx}}" class="addr-edit"></navigator>
+    </view>
+  </block>
+  <view class="empty-icon" hidden="{{addrListData.length > 0}}">
+    <image src="/images/empty.png"></image>
+    <view>您还没有地址信息，快去创建吧朋友！</view>
+  </view>
+  <navigator url="/pages/addrEdit/addrEdit" open-type="navigate" class="creatAddr-btn">添加新地址</navigator>
+</view>

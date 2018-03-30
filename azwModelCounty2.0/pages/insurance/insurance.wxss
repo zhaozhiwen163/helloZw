@@ -1,0 +1,31 @@
+/* pages/insurance/insurance.wxss */
+.insurance-wrap {
+  padding: 20rpx;
+  overflow: hidden;
+}
+.insurance-list {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.insurance-list image {
+  width: 220rpx;
+  height: 220rpx;
+  float: left;
+}
+.insurance-info {
+  float: right;
+  width: 430rpx;
+}
+.insurance-tit {
+  font-size: 32rpx;
+  color: #353535;
+  line-height: 60rpx;
+}
+.insurance-intro {
+  font-size: 26rpx;
+  color: #a9a9a9;
+  line-height: 1.5;
+}
