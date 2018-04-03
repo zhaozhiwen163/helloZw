@@ -22,7 +22,12 @@
     <view class="detail-con">{{countyNoticeInfo.content}}</view>
     </view>
 
-
+  <!-- 分类列表 -->
+  <view class='section'>
+     <picker value="{{index}}" range="{{cfyData}}" range-key="name" mode="selector" bindchange="bindPickerChange">
+         <view class='picker'>{{dom||cfyData[index].name}}</view>   
+     </picker>
+  </view>
   <!-- 商品列表 -->
   <view class="items-list">
     <navigator url="/pages/detail/detail?itemId={{item.id}}" open-type="navigate" class="item" wx:for="{{itemsData}}" wx:key="i" data-itemid="{{item.id}}">

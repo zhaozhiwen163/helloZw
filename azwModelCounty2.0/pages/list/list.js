@@ -16,6 +16,8 @@ Page({
     perpage: 10,
     isShow: true,
     userData: '',
+    dom: '全部商品',
+    commerFullid:''
   },
 
   /**
@@ -23,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
+    that.searchSection();
     if (typeof (wx.getStorageSync('userData').region) == 'undefined'){
       // const key = '&key=YjU5YTA3NzEtMDI2MS00YzhiLTljM2ItYzE2MTljZDQwNDNhNGExYjEzZTUtYmIx';
       wx.login({
@@ -87,9 +90,13 @@ Page({
                           imgPath: globalData.imgPath,
                         })
                         // 获取首页数据
-                        that.getItemsFn(globalData.categoryId, that.data.pageNum, that.data.perpage, userData.region);
+                        that.setData({
+                          commerFullid: globalData.categoryId
+                        })
+                        that.getItemsFn(that.data.commerFullid, that.data.pageNum, that.data.perpage, userData.region);
                         // 动态设置列表也的title
                         wx.setNavigationBarTitle({ title: '爱种网 ' + userData.fullName });
+                        
                       }
                     })
                   },
@@ -103,7 +110,10 @@ Page({
               } else {
                 // 动态设置列表也的title
                 wx.setNavigationBarTitle({ title: '爱种网 ' + userData.fullName });
-                that.getItemsFn(globalData.categoryId, that.data.pageNum, that.data.perpage, userData.region);
+                that.setData({
+                  commerFullid: globalData.categoryId
+                })
+                that.getItemsFn(that.data.commerFullid, that.data.pageNum, that.data.perpage, userData.region);
               }
             }
           })
@@ -114,7 +124,10 @@ Page({
       // 动态设置列表也的title
       wx.setNavigationBarTitle({ title: '爱种网 ' + userData.fullName });
       // 获取首页数据
-      that.getItemsFn(globalData.categoryId, that.data.pageNum, that.data.perpage, userData.region);
+      that.setData({
+        commerFullid: globalData.categoryId
+      })
+      that.getItemsFn(that.data.commerFullid, that.data.pageNum, that.data.perpage, userData.region);
     }
   },
 
@@ -162,7 +175,7 @@ Page({
     this.setData({ pageNum: ++this.data.pageNum });
     if (this.data.pageNum <= this.data.totalPages) {
       wx.showLoading({ title: '玩命加载中...' });
-      this.getItemsFn(globalData.categoryId, this.data.pageNum, this.data.perpage, userData.region);
+      this.getItemsFn(this.data.commerFullid, this.data.pageNum, this.data.perpage, userData.region);
     }
   },
 
@@ -225,5 +238,50 @@ Page({
   },
   closeAdFn: function () {
     this.setData({ isShow: true });
+  },
+  searchSection:function(){
+    var that = this;
+
+    var sign = utils.hexMD5('categoryId=21,2101,210101;21,2101,210102;21,2101,210103;21,2107,210703'+'&region=' + wx.getStorageSync('userData').region + globalData.key);
+    wx.request({
+      url: globalData.testRequestPath + '/local/xcx/categorylist',
+      data: {
+        categoryId:'21,2101,210101;21,2101,210102;21,2101,210103;21,2107,210703',
+        region: wx.getStorageSync('userData').region,
+        sign: sign
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        var arryX = res.data.data;
+        arryX.unshift({
+          "fullId": '21,2101,210101;21,2101,210102;21,2101,210103;21,2107,210703',
+          "id": 0,
+          "name": "全部商品"
+        })
+        that.setData({
+          cfyData: arryX
+        })
+        console.log(that.data.cfyData)
+
+      }
+    })
+  },
+  bindPickerChange: function (e) {
+    var that = this;
+    var userData = wx.getStorageSync('userData');
+    that.setData({
+      index: e.detail.value,
+      dom: '',
+      pageNum:1
+    })
+    
+    console.log(that.data.cfyData[that.data.index].fullId)
+    that.setData({
+      itemsData: [],
+      commerFullid: that.data.cfyData[that.data.index].fullId
+    })
+    that.getItemsFn(that.data.commerFullid, that.data.pageNum, that.data.perpage, userData.region);
   }
 })

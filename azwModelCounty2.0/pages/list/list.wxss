@@ -149,3 +149,19 @@
   background-color: #390;
   margin-left: 20rpx;
 }
+.section{
+  padding: 20rpx;
+  width: 100%;
+  
+  box-sizing: border-box;
+}
+.section picker{
+  width: 100%;
+  height: 75rpx;
+  line-height: 75rpx;
+  border:1rpx solid #ddd;
+  border-radius:6rpx;
+  text-align:center;
+  background-color:#fff;
+
+}
